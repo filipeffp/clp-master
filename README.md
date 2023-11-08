@@ -4,7 +4,7 @@
 
 <ul>
     <li>José Elvis Júlio de Santana - elvislcufrpe@gmail.com</li>
-    <li>Maryana Hermínio de Carvalho</li>
+    <li>Maryana Hermínio de Carvalho - maryhdec@gmail.com</li>
     <li>Túlio Lorca de Araujo Falcão - falcao.tulio@gmail.com</li>
     <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
