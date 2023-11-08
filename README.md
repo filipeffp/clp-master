@@ -9,7 +9,7 @@
     <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
     <li>Pedro Henrique - pedrohenrique110401@outlook.com</li>
-    <li>Henrique Mendes</li>
+    <li>Henrique Mendes - henrique.barbosa@ufrpe.br</li>
 </ul>
 
 ### Descrição Geral do Projeto:
