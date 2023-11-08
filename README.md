@@ -4,7 +4,7 @@
 
 <ul>
     <li>José Elvis Júlio de Santana</li>
-    <li>Maryana Hermínio de Carvalho<li>
+    <li>Maryana Hermínio de Carvalho</li>
     <li>Túlio Lorca de Araujo Falcão</li>
     <li>Felipe</li>
     <li>Arthur Nascimento</li>
