@@ -9,7 +9,7 @@
     <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
     <li>Pedro Henrique</li>
-    <li>???</li>
+    <li>Henrique Mendes</li>
 </ul>
 
 ### Descrição Geral do Projeto:
