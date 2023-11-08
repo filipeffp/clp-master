@@ -8,7 +8,7 @@
     <li>Túlio Lorca de Araujo Falcão</li>
     <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
-    <li>Pedro Henrique</li>
+    <li>Pedro Henrique - pedrohenrique110401@outlook.com</li>
     <li>Henrique Mendes</li>
 </ul>
 
