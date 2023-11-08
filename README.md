@@ -6,7 +6,7 @@
     <li>José Elvis Júlio de Santana</li>
     <li>Maryana Hermínio de Carvalho<li>
     <li>Túlio Lorca de Araujo Falcão</li>
-    <li>Felipe</li>
+    <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
     <li>Pedro Henrique</li>
     <li>???</li>
