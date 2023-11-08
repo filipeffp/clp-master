@@ -3,13 +3,13 @@
 ## Integrantes do Grupo:
 
 <ul>
-    <li>José Elvis Júlio de Santana</li>
+    <li>José Elvis Júlio de Santana - elvislcufrpe@gmail.com</li>
     <li>Maryana Hermínio de Carvalho</li>
     <li>Túlio Lorca de Araujo Falcão - falcao.tulio@gmail.com</li>
     <li>Filipe Falcão</li>
     <li>Arthur Nascimento</li>
-    <li>Pedro Henrique</li>
-    <li>???</li>
+    <li>Pedro Henrique - pedrohenrique110401@outlook.com</li>
+    <li>Henrique Mendes</li>
 </ul>
 
 ### Descrição Geral do Projeto:
