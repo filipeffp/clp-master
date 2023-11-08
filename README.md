@@ -3,7 +3,7 @@
 ## Integrantes do Grupo:
 
 <ul>
-    <li>José Elvis Júlio de Santana</li>
+    <li>José Elvis Júlio de Santana - elvislcufrpe@gmail.com</li>
     <li>Maryana Hermínio de Carvalho</li>
     <li>Túlio Lorca de Araujo Falcão</li>
     <li>Filipe Falcão</li>
