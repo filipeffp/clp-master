@@ -18,11 +18,24 @@
 
 #### Requisitos do Projeto:
 
-
+#### MVP 1
 <ol>
-    <li>REQ1 - O sistema deve controlar o acesso através de login e senha. Os clientes serão os usuários deste.</li>
-    <li>REQ2 - O sistema deve ter um acervo de livros digitais. Catálogo de e-books.</li>
-    <li>REQ3 - O sistema deve permitir o cliente criar sua estante de livros. Biblioteca personalizada do usuário</li>
-    <li>REQ4 - O sistema deve contabilizar o tempo gasto na leitura dos livros, a quantidade de páginas lidas e mostrar estes dados estatisticamente para o usuário.</li>
+    <li>Definicao da Framework/Linguagem. #14</li>
+    <li>Protótipo de design. #13</li>
+    <li>REQ - O sistema deve controlar o acesso através de login e senha. Os clientes serão os usuários deste. #2</li>
+    <li>REQ - O sistema deve permitir adicionar títulos de livros #15</li>
+    <li>REQ - O sistema deve permitir marcar a página em que parou no livre e o dia. #6</li>
+    <li>REQ - O sistema deve permitir criar uma estante de livros. Biblioteca personalizada do usuário. #4</li>
+</ol> 
+#### MVP 2
+<ol>
+    <li>REQ - O sistema deve ter um formulário onde o usuário pode relatar sua experiência, bugs e sugestões de melhoria. #7</li>
+    <li>REQ - O sistema deve ter um sistema de Avaliações e Comentários. #10</li>
+    <li>REQ - O sistema deve contabilizar o tempo gasto na leitura dos livros, a quantidade de páginas lidas e mostrar estes dados estatisticamente para o usuário. #5</li>
+    <li>REQ - O sistema deve ter plano de leitura onde o usuário estabeleça metas de leitura com confirmação de conclusão de metas. #8</li>
 </ol>
-
+#### MVP 3
+<ol>
+    <li>REQ - O sistema deve ter um acervo de livros digitais. Catálogo de e-books. #3</li>
+    <li>REQ - O sistema deve ter um sistema de Compartilhamento Social. #11</li>
+</ol>
