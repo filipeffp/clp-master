@@ -35,7 +35,7 @@
 <h3>MVP 2</h3>
 <ol>
     <li>REQ - O sistema deve ter um formulário onde o usuário pode relatar sua experiência, bugs e sugestões de melhoria. #7</li>
-    <li>REQ - O sistema deve ter um sistema de Avaliações e Comentários. #10</li>
+    <li>REQ - O sistema deve ter uma funcionalidade de Avaliações e Comentários. #10</li>
     <li>REQ - O sistema deve contabilizar o tempo gasto na leitura dos livros, a quantidade de páginas lidas e mostrar estes dados estatisticamente para o usuário. #5</li>
     <li>REQ - O sistema deve ter plano de leitura onde o usuário estabeleça metas de leitura com confirmação de conclusão de metas. #8</li>
 </ol>
