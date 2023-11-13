@@ -14,7 +14,10 @@
 
 ### Descrição Geral do Projeto:
 
-    O CLP (Controlador de Leituras Pessoal) é um aplicativo desenvolvido para pessoas apaixonadas por livros e que desejam manter o hábito de leitura, organizar sua biblioteca digital, obter novos títulos e acompanhar seu progresso como leitor (número de páginas lidas, tempo de leitura, etc.). O usuário do CPL vai poder criar um perfil que lhe permitirá configurar sua biblioteca, seu próprio perfil, criar nome de usuário e senha e acompanhar os dados de leitura.
+    O CLP (Controlador de Leituras Pessoal) é um aplicativo desenvolvido para pessoas apaixonadas por livros e que desejam manter o
+    hábito de leitura, organizar sua biblioteca digital, obter novos títulos e acompanhar seu progresso como leitor (número de páginas
+    lidas, tempo de leitura, etc.). O usuário do CPL vai poder criar um perfil que lhe permitirá configurar sua biblioteca, seu próprio
+    perfil, criar nome de usuário e senha e acompanhar os dados de leitura.
 
 #### Requisitos do Projeto:
 <ul>    
