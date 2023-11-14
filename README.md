@@ -10,6 +10,7 @@
     <li>Arthur Nascimento</li>
     <li>Pedro Henrique - pedrohenrique110401@outlook.com</li>
     <li>Henrique Mendes - henrique.barbosa@ufrpe.br</li>
+    <li>Fabio Elvino - fabioelvino@gmail.com</li>
 </ul>
 
 ### Descrição Geral do Projeto:
