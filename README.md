@@ -3,7 +3,7 @@
 ## Integrantes do Grupo:
 
 <ul>
-    <li>Arthur Nascimento - nascimentoarthur.br@gmail.com</li>
+    <li>Arthur Henrique - nascimentoarthur.br@gmail.com</li>
     <li>Fabio Elvino - fabioelvino@outlook.com</li>
     <li>Filipe Falcão Pimentel - filipeffp@gmail.com</li>
     <li>Henrique Mendes - henrique.barbosa@ufrpe.br</li>
