@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "clp-master"
+version = "0.1.0"
+description = "trabalho de engenharia de software - UFRPE 2023.1"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
