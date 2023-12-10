@@ -1,17 +1,28 @@
-# Welcome to MkDocs
+# Controle de Leitura Pessoal
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Página do projeto [CLP-Master](https://github.com/filipeffp/clp-master).
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Equipe
 
-## Project layout
+- Arthur Henrique  - nascimentoarthur.br@gmail.com
+- Fábio Elvino - fabioelvino@outlook.com
+- Filipe Falcão Pimentel - filipeffp@gmail.com
+- Henrique Mendes - henrique.barbosa@ufrpe.br
+- José Elvis Júlio de Santana - elvislcufrpe@gmail.com
+- Maryana Hermínio de Carvalho - maryhdec@gmail.com
+- Pedro Henrique - pedrohenrique110401@outlook.com
+- Túlio Lorca de Araujo Falcão - falcao.tulio@gmail.com
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+## Sobre
+
+O projeto CONTROLE DE LEITURA PESSOAL é um sistema desenvolvido para proporcionar uma experiência personalizada de controle e organização de leituras. Destinado a entusiastas e apaixonados por livros, o LeitorPessoal oferece uma plataforma intuitiva e funcional para gerenciar a jornada literária de cada usuário. 
+
+## Arquitetura do Projeto
+
+![CLP1](./images/doc1.jpg)
+![CLP2](./images/doc2.jpg)
+![CLP3](./images/doc3.jpg)
+![CLP4](./images/doc4.jpg)
+
