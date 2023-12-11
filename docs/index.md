@@ -24,5 +24,5 @@ O projeto CONTROLE DE LEITURA PESSOAL é um sistema desenvolvido para proporcion
 ![CLP1](./images/doc1.jpg)
 ![CLP2](./images/doc2.jpg)
 ![CLP3](./images/doc3.jpg)
-![CLP4](./images/doc4.jpeg)
+![CLP4](./images/doc4.jpg)
 
