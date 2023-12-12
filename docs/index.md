@@ -1,4 +1,4 @@
-# Controle de Leitura Pessoal
+# Controlador de Leitura Pessoal
 
 Página do projeto [CLP-Master](https://github.com/filipeffp/clp-master).
 
@@ -17,7 +17,7 @@ Página do projeto [CLP-Master](https://github.com/filipeffp/clp-master).
 
 ## Sobre
 
-O projeto CONTROLE DE LEITURA PESSOAL é um sistema desenvolvido para proporcionar uma experiência personalizada de controle e organização de leituras. Destinado a entusiastas e apaixonados por livros, o LeitorPessoal oferece uma plataforma intuitiva e funcional para gerenciar a jornada literária de cada usuário. 
+O projeto CONTROLADOR DE LEITURA PESSOAL é um sistema desenvolvido para proporcionar uma experiência personalizada de controle e organização de leituras. Destinado a entusiastas e apaixonados por livros, o LeitorPessoal oferece uma plataforma intuitiva e funcional para gerenciar a jornada literária de cada usuário. 
 
 ## Arquitetura do Projeto
 
