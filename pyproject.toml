@@ -8,6 +8,8 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.10"
 Django = "^4.2.7"
 mkdocs = "^1.5.3"
+djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.7"
 
 [tool.poetry.dev-dependencies]
 
