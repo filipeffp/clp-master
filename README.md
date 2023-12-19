@@ -15,22 +15,25 @@
 
 ## Descrição Geral do Projeto:
 <ul>
-O projeto LeitorPessoal é um sistema desenvolvido para proporcionar uma experiência personalizada de controle e organização de leituras. Destinado a entusiastas e apaixonados por livros, o LeitorPessoal oferece uma plataforma intuitiva e funcional para gerenciar a jornada literária de cada usuário.
+<p align="justify"> O projeto LeitorPessoal é um sistema desenvolvido para proporcionar uma experiência personalizada de controle e organização de leituras. Destinado a entusiastas e apaixonados por livros, o LeitorPessoal oferece uma plataforma intuitiva e funcional para gerenciar a jornada literária de cada usuário.</p>
 </ul>
 
-## Arquitetura do projeto
-</ul>
-Foi adotado o modelo C4 como técnica de notação gráfica enxuta para modelar a arquitetura do sistema de software da presente solução. O modelo C4 é baseado em uma decomposição estrutural de um sistema em contêineres e componentes e depende de técnicas de modelagem existentes, como o Linguagem de modelagem unificada (UML) ou Diagramas de relacionamento entre entidades (ERD) para uma decomposição mais detalhada dos blocos de construção arquitetônicos e de maneira bem breve é estruturado nos seguintes níveis:
+## Arquitetura do projeto:
+<ul>
+<p align="justify"> Foi adotado o modelo C4 como técnica de notação gráfica enxuta para modelar a arquitetura do sistema de software da presente solução. O modelo C4 é baseado em uma decomposição estrutural de um sistema em containers e componentes e depende de técnicas de modelagem existentes, como o Linguagem de Modelagem Unificada (UML) ou Diagramas de Relacionamento entre Entidades (ERD) para uma decomposição mais detalhada dos blocos de construção arquitetônicos e de maneira bem breve é estruturado nos seguintes níveis:</p>
 </ul>
 
-1. **NÍVEL 1 - Contexto**
-</br>O nível 1, diagrama de contexto, mostra o sistema inserido no mundo em termos das pessoas que o utilizam e outros possíveis sistemas de software com os quais ele interage.</br>
-2. **NÍVEL 2 - Contêineres**
-</br>O nível 2, diagrama de container, amplia o software e mostra os containers (aplicativos, armazenamentos de dados, microservices, etc.) que o compõe. Aqui constam as decisões de tecnologia.</br>
-3. **NÍVEL 3 - Componentes**
-</br>O nível 3, diagrama de componentes, amplia um container individual para mostrar os componentes dentro dele. Esses componentes mapeiam abstrações reais (por exemplo, um agrupamento de código) em sua base de código com detalhamentos dos componentes dentro da aplicação da API.</br>
-4. **NÍVEL 4 - Código**
-</br>O nível 4, que mostra como os componentes são implementados a nível de classes.</br></ul>
+1. **Nível - Contexto:**
+   - <p align="justify"> O nível 1, diagrama de contexto, mostra o sistema inserido no mundo em termos das pessoas que o utilizam e outros possíveis sistemas de software com os quais ele interage.</p>
+
+2. **Nível - Containers:**
+   - <p align="justify"> O nível 2, diagrama de container, amplia o software e mostra os containers (aplicativos, armazenamentos de dados, microserviços, etc.) que o compõe. Aqui constam as decisões de tecnologia.</p>
+
+3. **Nível - Componentes:**
+   - <p align="justify"> O nível 3, diagrama de componentes, amplia um container individual para mostrar os componentes dentro dele. Esses componentes mapeiam abstrações reais (por exemplo, um agrupamento de código) em sua base de código com detalhamentos dos componentes dentro da aplicação da API.</p>
+
+4. **Nível - Código:**
+   - O nível 4, que mostra como os componentes são implementados a nível de classes.
 
 A página de documentação do projeto está disponível em https://filipeffp.github.io/clp-master/.
 
@@ -54,7 +57,7 @@ A página de documentação do projeto está disponível em https://filipeffp.gi
     - O programa será usado por pessoas que desejam organizar e acompanhar suas leituras pessoais.
 
 2. **Que serviços são "necessários"?**
-    - Os serviços necessários incluem o cadastro de livros, a exibição de uma lista de leituras, avaliações e comentários, além de notificações para incentivar a continuidade da leitura.
+    - <p align="justify"> Os serviços necessários incluem o cadastro de livros, a exibição de uma lista de leituras, avaliações e comentários, além de notificações para incentivar a continuidade da leitura.</p>
 
 3. **Quais serviços cada usuário pode executar?**
-    - Cada usuário pode executar operações como cadastrar novos livros, visualizar sua lista de leituras, avaliar livros e receber notificações para continuar a leitura.
+    - <p align="justify"> Cada usuário pode executar operações como cadastrar novos livros, visualizar sua lista de leituras, avaliar livros e receber notificações para continuar a leitura.</p>
