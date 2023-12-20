@@ -50,6 +50,13 @@ A página de documentação do projeto está disponível em https://filipeffp.gi
 
 4. **Notificações:**
    - Implementar um sistema de notificação para lembrar os usuários de continuar a leitura.
+     
+5. **Gameficação:**
+   - Implementar um sistema de engajamento para motivação.
+
+6. **Relatórios:**
+   - Implementar Relatório de dados estatísticos.
+
 
 ## Detalhes das Funcionalidades:
 
