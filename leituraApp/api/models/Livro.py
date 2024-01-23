@@ -8,7 +8,7 @@ class Livro(models.Model):
     categoria             = models.CharField(max_length=200)
     pagina_atual          = models.IntegerField()
     concluido             = models.BooleanField(default=False)
-    imagem                = models.BooleanField(default=False)
+    imagem                = models.CharField(max_length=500)
     
     
 
