@@ -2,10 +2,15 @@ from django.db import models
 
 
 class Livro(models.Model):
-    livro_id        = models.BigAutoField(primary_key=True)
-    titulo          = models.CharField(max_length=200)
-    autor           = models.CharField(max_length=200)
-    ano_publicacao  = models.IntegerField()
+    livro_id              = models.BigAutoField(primary_key=True)
+    titulo                = models.CharField(max_length=200)
+    quantidade_paginas    = models.IntegerField()
+    categoria             = models.CharField(max_length=200)
+    pagina_atual          = models.IntegerField()
+    concluido             = models.BooleanField(default=False)
+    imagem                = models.CharField(max_length=500)
+    
+    
 
     def __str__(self):
         return self.titulo
