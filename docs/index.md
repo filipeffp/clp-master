@@ -26,3 +26,7 @@ O projeto CONTROLADOR DE LEITURA PESSOAL é um sistema desenvolvido para proporc
 ![CLP3](./images/doc3.jpg)
 ![CLP4](./images/doc4.jpg)
 
+## Diagrama de Classes
+
+![CLP5](./images/doc5.jpg)
+
