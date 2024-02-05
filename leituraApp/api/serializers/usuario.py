@@ -10,4 +10,5 @@ class UsuarioSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
         model = Usuario
+        fields = '__all__'
         #fields = ('title', 'description')
