@@ -4,6 +4,9 @@ import { router } from "./Router";
 import { Dialog } from "@/components/ui/dialog";
 import App from "../App";
 import { ModalProvider, useModalContext } from "@/contexts/ModalContext";
+import Login from "@/features/login";
+import Cadastro from "@/features/cadastro";
+import BemVindo from "@/features/bemVindo";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
@@ -35,6 +38,9 @@ export default function AppRoutes() {
             />
           ))}
         </Route>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/cadastro" element={<Cadastro/>}/>
+        <Route path="/bemVindo" element={<BemVindo/>}/>
       </Routes>
     </ModalProvider>
   );
