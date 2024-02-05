@@ -36,6 +36,7 @@
    - O nível 4, que mostra como os componentes são implementados a nível de classes.
 
 A página de documentação do projeto está disponível em https://filipeffp.github.io/clp-master/.
+Quadro Kanban com o planejamento de Sprints: https://github.com/users/filipeffp/projects/2
 
 ## Requisitos do Projeto:
    
