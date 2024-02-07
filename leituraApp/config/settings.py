@@ -130,3 +130,11 @@ SWAGGER_SETTINGS = {
    'USE_SESSION_AUTH': False
 }
 
+#Email Config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'clp.enganharia.software@gmail.com'
+EMAIL_HOST_PASSWORD ='engenharia123'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+EMAIL_TIMEOUT = 300 # in seconds
+DEFAULT_FROM_EMAIL = 'CLP <clp.enganharia.software@gmail.com>'
