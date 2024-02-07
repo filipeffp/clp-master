@@ -10,4 +10,5 @@ class ColecaoSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
         model = ColecaoPessoal
+        fields = '__all__'
         #fields = ('title', 'description')

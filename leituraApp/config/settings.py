@@ -130,19 +130,30 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SWAGGER_SETTINGS = {
-   'USE_SESSION_AUTH': False
-}
-
-SWAGGER_SETTINGS = {
+    #
+    # 'USE_SESSION_AUTH': False,
+    # 'JSON_EDITOR': True,
+    # 'DEFAULT_MODEL_RENDERING': 'example',
+    # 'SECURITY_DEFINITIONS': {
+    #     'Token': {
+    #         'type': 'apiKey',
+    #         'name': 'Authorization',
+    #         'in': 'header'
+    #     },
+    # },
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'DEFAULT_MODEL_RENDERING': 'example',
     'USE_SESSION_AUTH': False,
     'JSON_EDITOR': True,
-    'DEFAULT_MODEL_RENDERING': 'example',
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        },
-    },
+    'SHOW_REQUEST_HEADERS': True,
+    'DOC_EXPANSION': 'list',
+    'OPERATIONS_SORTER': 'alpha',
+    'TAGS_SORTER': 'alpha',
+    'ENABLE_FILTERING': True,
+    'VALIDATOR_URL': None,
 }
 
