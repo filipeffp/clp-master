@@ -157,3 +157,5 @@ SWAGGER_SETTINGS = {
     'VALIDATOR_URL': None,
 }
 
+import django_heroku
+django_heroku.settings(locals())
