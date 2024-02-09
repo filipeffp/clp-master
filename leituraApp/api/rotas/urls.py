@@ -55,5 +55,5 @@ urlpatterns = [
     path('historicos/atualizar', HistoricoController.as_view({'put': 'atualizar_historicos'}), name='historico'),
     path('historicos/deletar', HistoricoController.as_view({'delete': 'deletar_historicos'}), name='historico'),
 
-    path('historicoss/criar', HistoricoController.as_view({'post': 'deletar_historicossss'}), name='historico'),
+    path('historicos/atualizar_meta', HistoricoController.as_view({'put': 'atualizar_meta_historicos'}), name='historico'),
 ]

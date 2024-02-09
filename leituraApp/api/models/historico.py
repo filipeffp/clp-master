@@ -4,6 +4,12 @@ from api.models.livro import Livro
 from api.models.usuario import Usuario
 
 
+class HistoricoMeta(models.Model):
+    historico_meta_id = models.BigAutoField(primary_key=True)
+    # livro_id = models.IntegerField()
+    # usuario_id = models.IntegerField()
+    data_meta = models.DateTimeField()
+
 class Historico(models.Model):
     historico_id    = models.BigAutoField(primary_key=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
@@ -12,7 +18,7 @@ class Historico(models.Model):
     #livro_id        = models.IntegerField()
     data_leitura    = models.DateTimeField()
     pagina_atual    = models.IntegerField()          
-    data_meta       = models.DateTimeField()
+    data_meta = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.historico_id

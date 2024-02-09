@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.models.historico import Historico
-from api.serializers.historico import HistoricoSerializer
+from api.serializers.historico import HistoricoSerializer, HistoricoMetaSerializer
 from config.schema import CustomSchema
 
 
@@ -64,20 +64,50 @@ class HistoricoController(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    @swagger_auto_schema(
-        request_body=None
-    )
-    @action(detail=True, methods=['patch'])
-    def deletar_historicossss(self, request, pk=None):
+
+    # @swagger_auto_schema(method='put', manual_parameters=[
+    #     openapi.Parameter(name='livro_id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER),
+    # openapi.Parameter(name='usuario_id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER)], request_body=HistoricoMetaSerializer)
+    # @action(detail=True, methods=['put'])
+    # def atualizar_meta_historicos(self, request, pk=None):
+    #     try:
+    #         livro_id = int(request.query_params.get('livro_id'))
+    #         usuario_id = int(request.query_params.get('usuario_id'))
+    #         #titulo = request.query_params.get('titulo')
+    #         item = Historico.objects.filter(livro_id=livro_id, usuario_id=usuario_id)
+    #         item.data['data_meta'] = request.data['data_meta']
+    #     except Historico.DoesNotExist:
+    #         return Response(status=status.HTTP_404_NOT_FOUND)
+    #
+    #     serializer = HistoricoSerializer(data=item)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_200_OK)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @swagger_auto_schema(method='put', manual_parameters=[
+        openapi.Parameter(name='livro_id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER),
+        openapi.Parameter(name='usuario_id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER)],
+                         request_body=HistoricoMetaSerializer)
+    @action(detail=True, methods=['put'])
+    def atualizar_meta_historicos(self, request, pk=None):
         try:
-            id = request.query_params.get('id')
-            pk = int(id)
-            item = Historico.objects.get(pk=pk)
+            livro_id = request.query_params.get('livro_id')
+            usuario_id = request.query_params.get('usuario_id')
+            data_meta = request.data.get('data_meta')
+            item = Historico.objects.get(livro_id=livro_id, usuario_id=usuario_id)
+
+            # Criar um dicionário apenas com o campo data_meta
+            data_atualizada = {'data_meta': data_meta}
+
+            # Atualizar o objeto Historico com os novos dados mantendo os outros campos inalterados
+            serializer = HistoricoSerializer(instance=item, data=data_atualizada, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Historico.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-
-        item.delete()
-        return Response(status=status.HTTP_200_OK)
 
 
     @swagger_auto_schema(method='delete', manual_parameters=[openapi.Parameter(name='id', in_=openapi.IN_QUERY, type=openapi.TYPE_INTEGER),])
