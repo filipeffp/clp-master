@@ -10,4 +10,5 @@ class LivroSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
         model = Livro
+        fields = '__all__'
         #fields = ('title', 'description')

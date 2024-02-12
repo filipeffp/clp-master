@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)!26l(19x1q#lo#!m@8qcymaw0#2(ga)evh263b%q4#mly3jc0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -115,11 +116,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+CSRF_TRUSTED_ORIGINS = ["https://cplm-1f6ca9a43902.herokuapp.com"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')# / 'staticfiles'
+PORT = os.environ.get('PORT', 8000)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -127,19 +132,32 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SWAGGER_SETTINGS = {
-   'USE_SESSION_AUTH': False
-}
-
-SWAGGER_SETTINGS = {
+    #
+    # 'USE_SESSION_AUTH': False,
+    # 'JSON_EDITOR': True,
+    # 'DEFAULT_MODEL_RENDERING': 'example',
+    # 'SECURITY_DEFINITIONS': {
+    #     'Token': {
+    #         'type': 'apiKey',
+    #         'name': 'Authorization',
+    #         'in': 'header'
+    #     },
+    # },
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'DEFAULT_MODEL_RENDERING': 'example',
     'USE_SESSION_AUTH': False,
     'JSON_EDITOR': True,
-    'DEFAULT_MODEL_RENDERING': 'example',
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        },
-    },
+    'SHOW_REQUEST_HEADERS': True,
+    'DOC_EXPANSION': 'list',
+    'OPERATIONS_SORTER': 'alpha',
+    'TAGS_SORTER': 'alpha',
+    'ENABLE_FILTERING': True,
+    'VALIDATOR_URL': None,
 }
 
+#import django_heroku
+#django_heroku.settings(locals())

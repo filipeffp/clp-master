@@ -45,14 +45,18 @@ import api.rotas.urls
 
 
 
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from api.controllers.usuario_controller import UsuarioController
 
-router = DefaultRouter()
+#router = DefaultRouter()
 #router.register(r'tasks', UsuarioController)
-router.register(r'usuario/', UsuarioController, basename='Usuario')
+#router.register(r'usuario', UsuarioController, basename='Usuario')
 
+#router = SimpleRouter()
+#router.register(r'users', UsuarioController)
+#router.register(r'accounts', AccountViewSet)
+#urlpatterns = router.urls
 
 
 schema_view = get_schema_view(
@@ -62,20 +66,19 @@ schema_view = get_schema_view(
         description="CPL Leitura",
         contact=openapi.Contact(email="cpl@myapp.com")
     ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
 )
+
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    #path('api/', include(router.urls)),
+    path('api/', include('api.rotas.urls')),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-    path('api/', include(router.urls)),
-    # Adicione as URLs do Swagger
+    #path('api/', include(api.rotas.urls.router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
 
 
 

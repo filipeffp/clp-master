@@ -1,4 +1,10 @@
 from django.urls import path
+from rest_framework.routers import SimpleRouter
+
+from api.controllers.usuario_controller import UsuarioController
+from api.controllers.livro_controller import LivroController
+from api.controllers.historico_controller import HistoricoController
+from api.controllers.colecao_controller import ColecaoController
 
 # from api.controllers.livro_controller import livro_get
 # from api.controllers.livro_controller import livro_get_id
@@ -25,33 +31,42 @@ from django.urls import path
 # from api.controllers.historico_controller import historico_delete
 
 
-
+# router = SimpleRouter()
+# router.register(r'users', UsuarioController, basename='usuario')
+# urlpatterns = router.urls
 # specify URL Path for rest_framework
-# urlpatterns = [
-#     #path('', include(router.urls)),
-#     #path('api/', include('rest_framework.urls'))
-#
-#      path('livro/', livro_get),
-#      path('livro/inserir', livro_post, name='create_item'),
-#      path('livro/<int:pk>/', livro_get_id),
-#      path('livro/<int:pk>/update/', livro_put),
-#      path('livro/<int:pk>/delete/', livro_delete),
-#
-#     path('usuario/', usuario_get),
-#     path('usuario/inserir', usuario_post),
-#     path('usuario/<int:pk>/', usuario_get_id),
-#     path('usuario/<int:pk>/update/', usuario_put),
-#     path('usuario/<int:pk>/delete/', usuario_delete),
-#
-#     path('colecao/', colecao_get),
-#     path('colecao/', colecao_post),
-#     path('colecao/<int:pk>/', colecao_get_id),
-#     path('colecao/<int:pk>/update/', colecao_put),
-#     path('colecao/<int:pk>/delete/', colecao_delete),
-#
-#     path('historico/', historico_get),
-#     path('historico/', historico_post),
-#     path('historico/<int:pk>/', historico_get_id),
-#     path('historico/<int:pk>/update/', historico_put),
-#     path('historico/<int:pk>/delete/', historico_delete)
-# ]
+urlpatterns = [
+    #path('usuario', UsuarioController.as_view({'get': 'list', 'post': 'create'}), name='mymodel-list')
+    path('usuarios/buscar', UsuarioController.as_view({'get': 'listar_usuarios'}), name='usuario'),
+    path('usuarios/buscar_id', UsuarioController.as_view({'get': 'listar_usuarios_id'}), name='usuario'),
+    path('usuarios/criar', UsuarioController.as_view({'post': 'salvar_usuarios'}), name='usuario'),
+    path('usuarios/atualizar', UsuarioController.as_view({'put': 'atualizar_usuarios'}), name='usuario'),
+    path('usuarios/deletar', UsuarioController.as_view({'delete': 'deletar_usuarios'}), name='usuario'),
+
+    path('livros/buscar', LivroController.as_view({'get': 'listar_livros'}), name='livro'),
+    path('livros/buscar_id', LivroController.as_view({'get': 'listar_livros_id'}), name='livro'),
+    path('livros/buscar_titulo', LivroController.as_view({'get': 'listar_livros_titulo'}), name='livro'),
+    path('livros/criar', LivroController.as_view({'post': 'salvar_livros'}), name='livro'),
+    path('livros/atualizar', LivroController.as_view({'put': 'atualizar_livros'}), name='livro'),
+    path('livros/deletar', LivroController.as_view({'delete': 'deletar_livros'}), name='livro'),
+
+    path('historicos/buscar', HistoricoController.as_view({'get': 'listar_historicos'}), name='historico'),
+    path('historicos/buscar_id', HistoricoController.as_view({'get': 'listar_historicos_id'}), name='historico'),
+    path('historicos/criar', HistoricoController.as_view({'post': 'salvar_historicos'}), name='historico'),
+    path('historicos/atualizar', HistoricoController.as_view({'put': 'atualizar_historicos'}), name='historico'),
+    path('historicos/deletar', HistoricoController.as_view({'delete': 'deletar_historicos'}), name='historico'),
+
+    path('historicos/atualizar_meta', HistoricoController.as_view({'put': 'atualizar_meta_historicos'}), name='historico'),
+    path('historicos/atualizar_leitura', HistoricoController.as_view({'put': 'atualizar_leiura_historicos'}), name='historico'),
+
+    path('colecoes/buscar', ColecaoController.as_view({'get': 'listar_colecoes'}), name='colecao'),
+    path('colecoes/buscar_id', ColecaoController.as_view({'get': 'listar_colecoes_id'}), name='colecao'),
+    path('colecoes/criar', ColecaoController.as_view({'post': 'salvar_colecoes'}), name='colecao'),
+    path('colecoes/atualizar', ColecaoController.as_view({'put': 'atualizar_colecoes'}), name='colecao'),
+    path('colecoes/deletar', ColecaoController.as_view({'delete': 'deletar_colecoes'}), name='colecao'),
+
+    path('colecoes/atualizar_livro', ColecaoController.as_view({'put': 'salvar_item_colecoes'}), name='colecao'),
+    path('colecoes/deletar_livro', ColecaoController.as_view({'put': 'deletar_item_colecoes'}), name='colecao'),
+
+    path('notificacoes/enviar', LivroController.as_view({'post': 'enviar_notificacao'}), name='livro'),
+]
