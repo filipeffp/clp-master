@@ -7,19 +7,20 @@ import {
   import SelectCategoria from "../../../../components/SelectCategoria"
   import { useState } from "react"
   import InputText from "../../../../components/InputText"
-  import InputNumber from "../../../../components/InputNumber"
-  import { useListaLivrosContext } from "@/contexts/ListaDeLivrosContext"
-  import { useModalContext } from "@/contexts/ModalContext"
-  import { v4 as uuidv4 } from 'uuid'
+  import InputNumber from "../../../../components/InputNumber"  
+  import { useModalContext } from "@/contexts/ModalContext"  
   import axios from "axios"
+import { useLogadoContext } from "@/contexts/LogadoContext"
+import { api } from "@/api/api"
   
   export function ModalCriacaoLivro() {
   
     const [nomeLivro, setNomeLivro] = useState("")
     const [quantidadePaginas, setQuantidadePaginas] = useState("")
-    const [categoria, setCategoria] = useState("")
-    const { setListaLivros } = useListaLivrosContext();
+    const [categoria, setCategoria] = useState("")    
     const { setModalOpen }  = useModalContext() 
+
+    const { usuarioID, buscaLivrosPorUsuario } = useLogadoContext();
   
     function limpaCampos() {
       setNomeLivro("")
@@ -42,23 +43,37 @@ import {
       }
     };
   
-    async function adicionarLivro() {
+    async function adicionarLivro() {      
 
-      const uniqueId = uuidv4();
-
-      const livroAdicionado = {
-        id: uniqueId,
-        nomeDoLivro: nomeLivro,
-        quantidadeDePaginas: quantidadePaginas,
+      const livroAdicionado = {        
+        titulo: nomeLivro,
+        quantidade_paginas: quantidadePaginas,
         categoria: categoria,
-        paginaAtual: "0",
+        pagina_atual: "0",
         concluido: false,
-        imagem: await buscarImagemLivro(nomeLivro)        
+        user_id: usuarioID,
+        imagem: await buscarImagemLivro(nomeLivro),
+        data_meta: "2024-02-19T01:20:09.958000Z",
+        avaliacao: 0       
       }
-  
-      setListaLivros(prevListaLivros => ([...prevListaLivros, livroAdicionado]));
-      limpaCampos();
-      setModalOpen(false);
+
+      try {
+        // Faz a requisição POST para adicionar o livro
+        const response = await api.post("/livros/criar", livroAdicionado);
+    
+        // Verifica se a requisição foi bem-sucedida
+        if (response.status >= 200 && response.status < 300) {
+          console.log("Livro adicionado com sucesso!");
+          // Limpa os campos e fecha o modal
+          buscaLivrosPorUsuario();
+          limpaCampos();
+          setModalOpen(false);
+        } else {
+          console.error("Erro ao adicionar livro:", response.data);
+        }
+      } catch (error) {
+        console.error("Erro ao adicionar livro:", error);
+      }          
     }
   
     return (

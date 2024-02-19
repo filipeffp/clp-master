@@ -1,16 +1,16 @@
 import { ModalsController } from "@/components/ModalsController";
-import { useListaLivrosContext } from "@/contexts/ListaDeLivrosContext";
 import { useModalContext } from "@/contexts/ModalContext";
 import { BsBook, BsPlus } from "react-icons/bs";
 import CardLivro from "./componentes/CardLivro";
 import { useEffect, useState } from "react";
 import InputText from "@/components/InputText";
 import { LivroProps } from "@/types/LivroProps";
+import { useLogadoContext } from "@/contexts/LogadoContext";
 
-export default function MeusLivros() {
+export default function MeusLivros() {  
 
   const { modalOpen, setModalOpen, setModalQueEstaAberto } = useModalContext()
-  const { listaLivros } = useListaLivrosContext()
+  const { livros, setLogado, setUsuarioID } = useLogadoContext();
   const [filtroPeloNome, setFiltroPeloNome] = useState("")
   const [livrosFiltrados, setLivrosFiltrados] = useState<LivroProps[]>([]);
 
@@ -19,12 +19,23 @@ export default function MeusLivros() {
     setModalOpen(true);
   }
 
-  useEffect(() => {
-    const livrosFiltrados = listaLivros.filter((livro) =>
-      livro.nomeDoLivro?.toLowerCase().includes(filtroPeloNome.toLowerCase())
-    );
+  useEffect(() => {    
+    const livrosFiltrados = livros.filter((livro:any) =>
+      livro.titulo?.toLowerCase().includes(filtroPeloNome.toLowerCase())
+    );    
     setLivrosFiltrados(livrosFiltrados);
-  }, [filtroPeloNome, listaLivros]);  
+  }, [filtroPeloNome, livros]); 
+  
+  useEffect(() => {
+    const loginData = JSON.parse(localStorage.getItem('login') || '');
+    if (loginData && loginData.log) {
+      // Se o login estiver armazenado e estiver logado, define o estado de logado como true
+      setLogado(true);
+      // Define o estado do userID com base nos dados armazenados no localStorage
+      setUsuarioID(loginData.userID);
+      // Você pode fazer outras operações com os dados do login aqui, se necessário
+    }
+  },[]);
 
   return (
     <section>
@@ -41,7 +52,7 @@ export default function MeusLivros() {
       </div>
 
       <div>
-        <div className="flex justify-center flex-wrap gap-[60px]">
+        <div className="flex justify-center flex-wrap gap-[50px]">
           {livrosFiltrados.map((livro, index) => {
             return <CardLivro {...livro} key={index} />
           })}
