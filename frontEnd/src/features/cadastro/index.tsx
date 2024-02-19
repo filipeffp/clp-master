@@ -1,13 +1,36 @@
 import Header from "@/components/Header";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { api } from "@/api/api";
 
 export default function Cadastro() {
 
   const [email, setEmail] = useState("")
+  const [nome, setNome] = useState("")
   const [senha, setSenha] = useState("")
   const [confirmacaoSenha, setConfirmacaoSenha] = useState("")
   const navigate = useNavigate();
+
+  const criarNovoUsuario = async() => {
+
+    const dadosDoUsuario = {
+      nome: {nome},
+      email: {email},
+      senha: {senha}
+    }
+
+    try {
+      // Fazendo a requisição POST para a rota /usuarios/criar
+      const resposta = await api.post("/usuarios/criar", dadosDoUsuario);
+      
+      // Se a requisição for bem-sucedida, retorna os dados do usuário criado
+      return resposta.data;
+    } catch (erro) {
+      // Se ocorrer um erro, você pode tratá-lo aqui, se necessário
+      console.error("Erro ao criar usuário:", erro);
+      throw erro; // Você pode optar por relançar o erro para que seja tratado em outro lugar
+    }
+  };
 
   const digitaEmail = (event: any) => {
     setEmail(event.target.value);
@@ -15,6 +38,10 @@ export default function Cadastro() {
 
   const digitaSenha = (event: any) => {
     setSenha(event.target.value);
+  };
+
+  const digitaNome = (event: any) => {
+    setNome(event.target.value);
   };
 
   const digitaConfirmacaoSenha = (event: any) => {
@@ -38,8 +65,7 @@ export default function Cadastro() {
       return;
     }
 
-    alert("Cadastro concluído com sucesso!");
-    navigate("/Login");
+    criarNovoUsuario();      
   };
 
   return (
@@ -48,6 +74,14 @@ export default function Cadastro() {
       <section className="flex items-center justify-center h-screen ">
         <div className="text-center flex flex-col gap-[15px] border border-azulPadrao rounded-lg p-6 items-center w-[367px] shadow-md shadow-[#add8e6]">
           <h1 className="font-bold text-[32px] text-azulPadrao">Sistema de Cadastro</h1>
+
+          <input
+            type="text"
+            value={nome}
+            onChange={digitaNome}
+            placeholder="Nome"
+            className="border p-2 w-full"
+          />
 
           <input
             type="text"

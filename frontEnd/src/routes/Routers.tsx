@@ -29,7 +29,10 @@ export default function AppRoutes() {
   return (
     <ModalProvider>
       <Routes>
-        <Route path="/" element={<App/>}>
+        <Route path="/" element={<BemVindo/>}/>
+        <Route path="/cadastro" element={<Cadastro/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/logado" element={<App/>}>
           {router.map((route: { path: string; element: React.JSX.Element }) => (
             <Route
               path={route.path}
@@ -37,10 +40,7 @@ export default function AppRoutes() {
               key={route.path}
             />
           ))}
-        </Route>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/cadastro" element={<Cadastro/>}/>
-        <Route path="/bemVindo" element={<BemVindo/>}/>
+        </Route>                   
       </Routes>
     </ModalProvider>
   );

@@ -3,11 +3,11 @@ import MeusLivros from "@/features/meusLivros";
 
 export const router = [
   {
-    path: "/",
+    path: "/logado/inicio",
     element: <Inicio/>,
   },
   {
-    path: "/meusLivros",
+    path: "/logado/meusLivros",
     element: <MeusLivros/>
   }  
 ];
