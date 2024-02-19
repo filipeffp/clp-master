@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useListaLivrosContext } from "@/contexts/ListaDeLivrosContext";
 import { LivroProps } from '@/types/LivroProps';
+import { useLogadoContext } from '@/contexts/LogadoContext';
 
 export default function CardInfos({ imagem, tipo, estilo }: any) {
-  const { listaLivros } = useListaLivrosContext();
+  const { livros } = useLogadoContext() 
   const [livrosFiltrados, setLivrosFiltrados] = useState<LivroProps[] | undefined>([]);
 
   useEffect(() => {
     // Chame a função de filtragem aqui e atualize o estado com os livros filtrados
-    if(listaLivros){
-    const livrosFiltrados = filtrarLivros(listaLivros);
+    if(livros){
+    const livrosFiltrados = filtrarLivros(livros);
     setLivrosFiltrados(livrosFiltrados);
     }
-  }, [listaLivros]);
+  }, [livros]);
 
   const filtrarLivros = (livros:LivroProps[] ) => {
     if(tipo == 1) {
-      const livrosFiltrados = livros.filter(livro => livro.paginaAtual === "0" && !livro.concluido);
+      const livrosFiltrados = livros.filter(livro => livro.pagina_atual === 0 && !livro.concluido);
       return livrosFiltrados;
     }
     if (tipo == 2) {
-      const livrosFiltrados = livros.filter(livro => livro.paginaAtual !== "0" && !livro.concluido);
+      const livrosFiltrados = livros.filter(livro => livro.pagina_atual !== 0 && !livro.concluido);
       return livrosFiltrados;
     }
     if (tipo == 3) {

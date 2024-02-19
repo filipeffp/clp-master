@@ -29,7 +29,7 @@ export default function BemVindo() {
                 </div>
                 <div className="flex flex-col">
                     <h4 className="text-azulPadrao text-[32px] font-bold text-center">Vamos lá!</h4>
-                    <h4 className="text-azulPadrao text-[32px] font-bold text-center">Não perca tempo e se junte a nós!</h4>
+                    <h4 className="text-azulPadrao text-[32px] font-bold text-center">Não perca tempo, junte-se a nós!</h4>
                 </div>
             </div>
         </section>

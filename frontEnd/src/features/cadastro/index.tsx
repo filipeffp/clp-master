@@ -14,17 +14,16 @@ export default function Cadastro() {
   const criarNovoUsuario = async() => {
 
     const dadosDoUsuario = {
-      nome: {nome},
-      email: {email},
-      senha: {senha}
+      nome: nome,
+      email: email,
+      senha: senha
     }
 
-    try {
-      // Fazendo a requisição POST para a rota /usuarios/criar
+    try {      
       const resposta = await api.post("/usuarios/criar", dadosDoUsuario);
-      
-      // Se a requisição for bem-sucedida, retorna os dados do usuário criado
-      return resposta.data;
+      console.log(resposta.data);      
+      alert("Email cadastrado com sucesso!");      
+      navigate("/login");
     } catch (erro) {
       // Se ocorrer um erro, você pode tratá-lo aqui, se necessário
       console.error("Erro ao criar usuário:", erro);
@@ -65,7 +64,8 @@ export default function Cadastro() {
       return;
     }
 
-    criarNovoUsuario();      
+    criarNovoUsuario();    
+
   };
 
   return (

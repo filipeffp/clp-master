@@ -11,12 +11,12 @@ interface Botao {
 
 const botoes: Botao[] = [
     {
-        url: "/",
+        url: "/logado/inicio",
         imagem: icon_inicio,
         id: 1,        
     },
     {
-        url: "/meusLivros",
+        url: "/logado/meusLivros",
         imagem: icon_meusLivros,
         id: 2,        
     },    
