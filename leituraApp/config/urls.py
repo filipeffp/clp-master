@@ -21,21 +21,69 @@ from django.urls import path, include
 from django.urls import path, re_path
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-#from rest_framework import permissions
+from rest_framework import permissions
+
+import api.rotas.urls
+
+# schema_view = get_schema_view(
+#    openapi.Info(
+#       title="Minha API",
+#       default_version='v1',
+#       description="Descrição da API",
+#    ),
+#    public=True,
+#    permission_classes=(permissions.AllowAny,),
+# )
+#
+# urlpatterns = [
+#     path('', include("api.rotas.urls")),
+#     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+#     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+#     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+# ]
+
+
+
+
+from rest_framework.routers import DefaultRouter, SimpleRouter
+
+from api.controllers.usuario_controller import UsuarioController
+
+#router = DefaultRouter()
+#router.register(r'tasks', UsuarioController)
+#router.register(r'usuario', UsuarioController, basename='Usuario')
+
+#router = SimpleRouter()
+#router.register(r'users', UsuarioController)
+#router.register(r'accounts', AccountViewSet)
+#urlpatterns = router.urls
+
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Minha API",
-      default_version='v1',
-      description="Descrição da API",
-   ),
-   public=True,
-   #permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="CPL Leitura",
+        default_version='v1',
+        description="CPL Leitura",
+        contact=openapi.Contact(email="cpl@myapp.com")
+    ),
 )
 
+
 urlpatterns = [
-    path('', include("api.rotas.urls")),
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    #path('admin/', admin.site.urls),
+    path('api/', include('api.rotas.urls')),
+    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    #path('api/', include(api.rotas.urls.router.urls)),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
+
+
+
+
+
+
+
+
+

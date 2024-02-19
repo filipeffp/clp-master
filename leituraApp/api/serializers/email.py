@@ -2,13 +2,13 @@
 from rest_framework import serializers
 
 # import model from models.py
-from api.models.usuario import Usuario
+from api.models.email import Email
 
 
 # Create a model serializer
-class UsuarioSerializer(serializers.ModelSerializer):
+class EmailSerializer(serializers.ModelSerializer):
     # specify model and fields
     class Meta:
-        model = Usuario
+        model = Email
         fields = '__all__'
         #fields = ('title', 'description')
