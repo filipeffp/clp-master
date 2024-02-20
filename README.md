@@ -8,7 +8,6 @@
     <li>Filipe Falcão Pimentel - filipeffp@gmail.com</li>
     <li>Henrique Mendes - henrique.barbosa@ufrpe.br</li>
     <li>José Elvis Júlio de Santana - elvislcufrpe@gmail.com</li>
-    <li>Maryana Hermínio de Carvalho - maryhdec@gmail.com</li>
     <li>Pedro Henrique - pedrohenrique110401@outlook.com</li>
     <li>Túlio Lorca de Araujo Falcão - falcao.tulio@gmail.com</li>
 </ul>
