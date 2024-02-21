@@ -75,6 +75,15 @@ O projeto CONTROLADOR DE LEITURA PESSOAL é um sistema desenvolvido para proporc
 
 ![CLP24](./images/tela_login.jpg)
 
+## CLP: Evidência de Testes das Principais Funcionalidades do Sistema
+
+![CLP25](./images/clp1.jpg)
+![CLP26](./images/clp2.jpg)
+![CLP27](./images/clp3.jpg)
+![CLP28](./images/clp4.jpg)
+![CLP29](./images/clp5.jpg)
+![CLP30](./images/clp6.jpg)
+![CLP31](./images/clp7.jpg)
 
 
 
