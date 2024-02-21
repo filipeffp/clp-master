@@ -57,7 +57,7 @@ export default function MeusLivros() {
           {livrosFiltrados.map((livro, index) => {
             let metaMessage = '';
 
-            if (livro.data_meta !== "2024-02-19T01:20:09.958000Z") { // Verifica se a propriedade data_meta está presente
+            if (livro.data_meta !== "2024-02-19T01:20:09.958000Z" && !livro.concluido) { // Verifica se a propriedade data_meta está presente
               const dataMeta = new Date(livro.data_meta);
               const hoje = new Date();
               const diffTime = dataMeta.getTime() - hoje.getTime();
