@@ -30,3 +30,65 @@ O projeto CONTROLADOR DE LEITURA PESSOAL é um sistema desenvolvido para proporc
 
 ![CLP5](./images/doc5.jpg)
 
+## API
+
+
+###Classe COLEÇÃO:
+
+![CLP6](./images/colecaoGET.jpg)
+![CLP7](./images/colecaoRead.jpg)
+![CLP8](./images/colecaoDelete.jpg)
+![CLP9](./images/colecaoUpdate.jpg)
+
+###Classe HISTÓRICO:
+
+![CLP10](./images/historicoList.jpg)
+![CLP11](./images/historicoRead.jpg)
+![CLP12](./images/historicoDelete.jpg)
+![CLP13](./images/historicoUpdate.jpg)
+
+###Classe LIVRO:
+
+![CLP14](./images/livroList.jpg)
+![CLP15](./images/livroRead.jpg)
+![CLP16](./images/livroDelete.jpg)
+![CLP17](./images/livroUpdate.jpg)
+
+###Classe USUÁRIO:
+
+![CLP18](./images/usuarioList.jpg)
+![CLP19](./images/usuarioRead.jpg)
+![CLP20](./images/usuarioDelete.jpg)
+![CLP21](./images/usuarioUpdate.jpg)
+
+## O APLICATIVO
+
+###Tela Inicial:
+
+![CLP22](./images/tela_inicial.jpg)
+
+###Tela de Cadastro
+
+![CLP23](./images/tela_cadastro.jpg)
+
+###Tela de Login:
+
+![CLP24](./images/tela_login.jpg)
+
+## CLP: Evidência de Testes das Principais Funcionalidades do Sistema
+
+![CLP25](./images/clp1.jpg)
+![CLP26](./images/clp2.jpg)
+![CLP27](./images/clp3.jpg)
+![CLP28](./images/clp4.jpg)
+![CLP29](./images/clp5.jpg)
+![CLP30](./images/clp6.jpg)
+![CLP31](./images/clp7.jpg)
+
+
+
+
+
+
+
+
