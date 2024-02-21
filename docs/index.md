@@ -10,7 +10,6 @@ Página do projeto [CLP-Master](https://github.com/filipeffp/clp-master).
 - Filipe Falcão Pimentel - filipeffp@gmail.com
 - Henrique Mendes - henrique.barbosa@ufrpe.br
 - José Elvis Júlio de Santana - elvislcufrpe@gmail.com
-- Maryana Hermínio de Carvalho - maryhdec@gmail.com
 - Pedro Henrique - pedrohenrique110401@outlook.com
 - Túlio Lorca de Araujo Falcão - falcao.tulio@gmail.com
 
@@ -84,6 +83,7 @@ O projeto CONTROLADOR DE LEITURA PESSOAL é um sistema desenvolvido para proporc
 ![CLP29](./images/clp5.jpg)
 ![CLP30](./images/clp6.jpg)
 ![CLP31](./images/clp7.jpg)
+![CLP32](./images/clp8.jpg)
 
 
 
