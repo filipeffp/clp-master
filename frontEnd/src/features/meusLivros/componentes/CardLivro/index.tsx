@@ -71,21 +71,39 @@ export default function CardLivro({ sugestao, avaliacaoReal, comentarios, ...liv
     >
       {mostrarComentarios && sugestao ? (
         <div className="">
-          {comentarios && comentarios.length > 0 && (
+          {comentarios && comentarios.length > 0 ? (
             <div className={`w-[220px] h-[280px] overflow-hidden border-black border rounded-md cursor-pointer ${sugestao ? 'pointer-events-none' : ''}`}>
               <div className="h-3/5 bg-white flex items-center justify-center border-b border-black">
                 <img src={livro.imagem} className="w-[230px] h-[166px]" />
               </div>
-              
+
               <div className={`h-2/5 ${getClassString()} p-2`}>
                 {comentarios.map((comentario, index) => (
-                  <div className='flex items-center gap-[5px]' key={index}>
-                    <LiaComment className="text-[18px] text-white" />
-                    <p className='text-white text-[16px]'>
-                      {comentario}
-                    </p>
+                  <div className='flex items-start gap-[5px] ' key={index}>
+                    <LiaComment className="text-white min-w-[18px] pt-[2px]" />
+                    <div className='flex flex-wrap'>
+                      <p className='text-white text-[14px] flex-wrap'>
+                        {comentario}
+                      </p>
+                    </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          ) : (
+            // Renderiza um card padrão se não houver comentários
+            <div className={`w-[220px] h-[280px] overflow-hidden border-black border rounded-md cursor-pointer ${sugestao ? 'pointer-events-none' : ''}`}>
+              <div className="h-3/5 bg-white flex items-center justify-center border-b border-black">
+                <img src={livro.imagem} className="w-[230px] h-[166px]" />
+              </div>
+              <div className={`h-2/5 ${getClassString()} p-2`}>
+                <div className="flex flex-col items-center h-full">
+                  <h1 className="text-[18px] text-bold text-white mt-[15px] mb-[20px]">{livro.titulo}</h1>
+                  <div className="flex w-full justify-around">
+                    <p className="text-white text-[14px]">{livro.categoria}</p>
+                    <p className="text-white text-[14px]">{sugestao ? 0 : livro.pagina_atual}/{livro.quantidade_paginas}</p>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -120,7 +138,7 @@ export default function CardLivro({ sugestao, avaliacaoReal, comentarios, ...liv
             </div>
           )
         ) : (
-          livro.avaliacao !== undefined && (
+          livro.avaliacao !== undefined && livro.avaliacao !== 0 && (
             <div className="mt-[5px]">
               {renderStars(livro.avaliacao)}
             </div>
