@@ -120,7 +120,7 @@ export default function CardLivro({ sugestao, avaliacaoReal, comentarios, ...liv
             </div>
           )
         ) : (
-          livro.avaliacao !== undefined && (
+          livro.avaliacao !== undefined && livro.avaliacao !== 0 && (
             <div className="mt-[5px]">
               {renderStars(livro.avaliacao)}
             </div>
