@@ -20,7 +20,7 @@ export default function Header() {
     } else {
       console.log("Nenhum dado de login encontrado no localStorage.");
     }
-  })
+  }, [])
 
   const toggleCaixa = () => {
     setMostrarCaixa(!mostrarCaixa);

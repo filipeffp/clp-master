@@ -17,12 +17,37 @@ export default function ModalCardAberto() {
 
     const { cardAberto, setModalOpen } = useModalContext()
     const [paginaAtual, setPaginaAtual] = useState("");
-    const { buscaLivrosPorUsuario } = useLogadoContext();
+    const { buscaLivrosPorUsuario, usuarioID } = useLogadoContext();
     const [avaliacao, setAvalicao] = useState(false);
-    const [rating, setRating] = useState(0);    
+    const [rating, setRating] = useState(0);
     const [date, setDate] = useState<Date>()
+    const [comentario, setComentario] = useState("");
 
-    function salvarEdicaoLivro() {
+    async function atualizarProgressoNoHistorico() {
+
+        const dataAtual = new Date();
+
+        const progresso = {
+            data_leitura: dataAtual,
+            pagina_atual: paginaAtual != "" ? paginaAtual : cardAberto?.pagina_atual,
+            data_meta: cardAberto?.data_meta,
+            usuario: usuarioID,
+            livro: cardAberto?.livro_id
+        }
+
+        try {
+            // Faz a requisição POST para a API e aguarda a resposta
+            const resposta = await api.post("/historicos/criar", progresso)
+
+            // Aqui você pode manipular a resposta se necessário
+            console.log("Resposta da API:", resposta);
+        } catch (erro) {
+            // Se ocorrer algum erro durante a requisição, ele será capturado aqui
+            console.error("Erro ao fazer requisição:", erro);
+        }
+    }
+
+    async function salvarEdicaoLivro() {
         const livroEditado = {
             id: cardAberto?.livro_id,
             titulo: cardAberto?.titulo,
@@ -36,9 +61,10 @@ export default function ModalCardAberto() {
             avaliacao: 0
         }
 
-        api.put(`/livros/atualizar?id=${cardAberto?.livro_id}`, livroEditado)
+        await api.put(`/livros/atualizar?id=${cardAberto?.livro_id}`, livroEditado)
             .then(response => {
                 console.log('Livro atualizado com sucesso:', response.data);
+                atualizarProgressoNoHistorico();
                 buscaLivrosPorUsuario();
                 setModalOpen(false);
                 // Faça algo após o sucesso da requisição, se necessário
@@ -49,7 +75,26 @@ export default function ModalCardAberto() {
             });
     }
 
-    function adicionarMeta(){
+    async function atualizaMetaNoHistorico() {
+
+        const dataAtual = new Date();
+
+        const progresso = {
+            data_leitura: dataAtual,
+            pagina_atual: paginaAtual != "" ? paginaAtual : cardAberto?.pagina_atual,
+            data_meta: date ? date : "2024-02-20T23:48:40.204Z",
+            usuario: usuarioID,
+            livro: cardAberto?.livro_id
+        }
+
+        try {
+            await api.post("/historicos/criar", progresso)
+        } catch (erro) {
+            console.error("Erro ao fazer requisição:", erro);
+        }
+    }
+
+    function adicionarMeta() {
         const livroEditado = {
             id: cardAberto?.livro_id,
             titulo: cardAberto?.titulo,
@@ -66,16 +111,14 @@ export default function ModalCardAberto() {
         api.put(`/livros/atualizar?id=${cardAberto?.livro_id}`, livroEditado)
             .then(response => {
                 console.log('Livro atualizado com sucesso:', response.data);
+                atualizaMetaNoHistorico()
                 buscaLivrosPorUsuario();
                 setModalOpen(false);
-                // Faça algo após o sucesso da requisição, se necessário
             })
             .catch(error => {
                 console.error('Erro ao atualizar livro:', error);
-                // Lidar com o erro, se necessário
             });
     }
-
 
     function deletarLivro() {
         if (cardAberto?.livro_id) {
@@ -93,7 +136,6 @@ export default function ModalCardAberto() {
         }
     }
 
-
     function concluirLivro() {
         const livroEditado = {
             id: cardAberto?.livro_id,
@@ -105,27 +147,42 @@ export default function ModalCardAberto() {
             user_id: cardAberto?.user_id,
             imagem: cardAberto?.imagem,
             data_meta: cardAberto?.data_meta,
-            avaliacao: rating
+            avaliacao: rating,
         }
 
-        abreMenuAvaliacao();
+        const comentarioParaBD = {
+            livros: [
+                {
+                    usuario_id: usuarioID,
+                    nome: cardAberto?.titulo,
+                    comentario: comentario
+                }
+            ]
+        }
 
         api.put(`/livros/atualizar?id=${cardAberto?.livro_id}`, livroEditado)
             .then(response => {
                 console.log('Livro atualizado com sucesso:', response.data);
-                buscaLivrosPorUsuario();
-                setModalOpen(false);
+
+                api.post("/livros/comentarios", comentarioParaBD)
+                    .then(response => {
+                        console.log(response.data)
+                        buscaLivrosPorUsuario();
+                        setModalOpen(false);
+                    })
             })
             .catch(error => {
                 console.error('Erro ao atualizar livro:', error);
             });
-
     }
 
-    function abreMenuAvaliacao() {        
+    function abreMenuAvaliacao() {
         setAvalicao(true);
     }
 
+    const handleCommentChange = (event: any) => {
+        setComentario(event.target.value);
+    };
 
     return (
         <DialogContent className='min-w-[400px] h-[400px] border-azulPadrao justify-center pb-0'>
@@ -134,7 +191,6 @@ export default function ModalCardAberto() {
                 <DialogDescription className="text-azulPadrao">{cardAberto?.categoria}</DialogDescription>
             </DialogHeader>
             <div className="flex-column">
-
                 {avaliacao ? (
                     <div>
                         <div className="flex justify-center mb-[10px]">
@@ -151,8 +207,14 @@ export default function ModalCardAberto() {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-center mt-[25px]">
-                            <button onClick={concluirLivro} className="bg-azulPadrao text-white px-6 py-3 rounded-full mt-4 hover:bg-opacity-80">
+                        <div className="flex flex-col justify-center mt-[25px] items-center">
+                            <textarea
+                                placeholder="Digite seu comentário"
+                                value={comentario}
+                                onChange={handleCommentChange}
+                                className="border border-gray-300 px-4 py-2 rounded-md mr-2 h-[100px] w-[350px]"
+                            />
+                            <button onClick={concluirLivro} className="bg-azulPadrao text-white px-6 py-3 rounded-full mt-4 hover:bg-opacity-80 w-[200px]">
                                 Enviar
                             </button>
                         </div>

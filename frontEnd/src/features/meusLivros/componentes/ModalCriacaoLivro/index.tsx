@@ -42,8 +42,31 @@ import { api } from "@/api/api"
         console.error('Erro ao buscar imagem do livro:', error);
       }
     };
+
+    async function adicionaLivroAoHistorico(livroID: any) {
+      const dataAtual = new Date();
+    
+      const livroNoHistorico = {
+        data_leitura: dataAtual,
+        pagina_atual: 0,
+        data_meta: "2024-02-20T23:48:40.204Z",
+        usuario: usuarioID,
+        livro: livroID
+      };
+    
+      try {
+        // Faz a requisição POST para a API e aguarda a resposta
+        const resposta = await api.post("/historicos/criar", livroNoHistorico);
+        
+        // Aqui você pode manipular a resposta se necessário
+        console.log("Resposta da API:", resposta);
+      } catch (erro) {
+        // Se ocorrer algum erro durante a requisição, ele será capturado aqui
+        console.error("Erro ao fazer requisição:", erro);
+      }
+    }
   
-    async function adicionarLivro() {      
+    async function adicionarLivro() {    
 
       const livroAdicionado = {        
         titulo: nomeLivro,
@@ -68,6 +91,7 @@ import { api } from "@/api/api"
           buscaLivrosPorUsuario();
           limpaCampos();
           setModalOpen(false);
+          adicionaLivroAoHistorico(response.data.livro_id)
         } else {
           console.error("Erro ao adicionar livro:", response.data);
         }

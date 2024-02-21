@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import logo_inicio from '../../assets/logo_inicio.png'
 import CardInfos from './componentes/CardInfos'
 import { conteudoCardConcluido, conteudoCardEmAndamento, conteudoCardNaoIniciado } from "@/data/conteudoCardInfos";
@@ -12,6 +12,9 @@ import CardMeta from './componentes/CardMeta';
 export default function Inicio() {
 
     const { setLogado, setUsuarioID, listaSugestoes, setListaSugestoes, usuarioID, buscaLivrosPorUsuario, metasDeLivros } = useLogadoContext();
+    const [livrosAPI, setLivrosAPI] = useState<any[]>([]);
+    const [comentariosAPI, setComentariosAPI] = useState<any[]>([]);
+    
 
     const removerSugestao = (livroRemovido: any) => {
         setListaSugestoes(prevSugestoes => prevSugestoes.filter(livro => livro !== livroRemovido));
@@ -36,9 +39,10 @@ export default function Inicio() {
             await api.post('/livros/criar', livroAjustado);
 
             // Após adicionar o livro com sucesso, remova-o da lista de sugestões
+            buscaLivrosPorUsuario();
 
             removerSugestao(livroSelecionado);
-            buscaLivrosPorUsuario();
+
             alert("Livro adicionado a lista!");
         } catch (error) {
             console.error('Erro ao adicionar sugestão:', error);
@@ -60,13 +64,56 @@ export default function Inicio() {
         return diferencaEmDias;
     }
 
+    const buscaLivros = async () => {
+        try {
+            const response = await api.get("/livros/buscar");
+            const livrosBuscados = response.data;
+            console.log("Livros da API: ", livrosBuscados)
+            setLivrosAPI(livrosBuscados)
+
+        } catch (error) {
+            console.error('Erro ao buscar livros', error);
+        }
+    }
+
+    const buscaListaComentarios = async () => {
+        try {
+            const response = await api.get("/livros/comentarios_lista");
+            const comentariosDaAPI = response.data;
+            console.log("Comentários da API: ", comentariosDaAPI)
+            setComentariosAPI(comentariosDaAPI)
+
+        } catch (error) {
+            console.error('Erro ao buscar comentários e avaliações:', error);
+        }
+    }
+
+    function constroiCard(livro:any) {
+        
+        const livrosRelacionados = livrosAPI.filter((livroAPI) => livroAPI.titulo === livro.titulo);
+
+        const totalAvaliacoes = livrosRelacionados.filter((livroAPI) => livroAPI.avaliacao !== 0).reduce((total, livroAPI) => total + livroAPI.avaliacao, 0);
+        const mediaAvaliacoes = totalAvaliacoes / livrosRelacionados.filter((livroAPI) => livroAPI.avaliacao !== 0).length;        
+
+        const comentariosDoLivro = comentariosAPI.filter((comentario: any) => {
+            return comentario.nome === livro.titulo;
+          });
+
+        const comentarios = comentariosDoLivro.map((item: any) => item.comentario);        
+
+        return <CardLivro {...livro} sugestao={true} avaliacaoReal={mediaAvaliacoes} comentarios={comentarios}/>
+    }
+
     useEffect(() => {
         const loginData = JSON.parse(localStorage.getItem('login') || '');
         if (loginData && loginData.log) {
             // Se o login estiver armazenado e estiver logado, define o estado de logado como true
             setLogado(true);
-            // Define o estado do userID com base nos dados armazenados no localStorage
-            setUsuarioID(loginData.userID);            
+            // Define o estado do userID com base nos dados armazenados no localStorage            
+            setUsuarioID(loginData.userID);
+
+            buscaLivros();
+            buscaListaComentarios();
         }
     }, []);
 
@@ -75,13 +122,13 @@ export default function Inicio() {
             <div className='flex items-center mb-[35px]'>
                 <img src={logo_inicio} alt='icone de início' className='h-[28px] w-[28px]' />
                 <h1 className='font-bold text-[32px] text-azulPadrao ml-[8px]'>MEU PAINEL</h1>
-            </div>
+            </div>       
 
             {listaSugestoes.length > 0 && (
                 <div className='flex flex-col items-center gap-[35px] mb-[60px]'>
                     <div className="flex flex-col items-center">
                         <h2 className='font-bold text-[28px] text-azulPadrao'>Deseja adicionar algum dos livros recomendados a sua lista?</h2>
-                        <p className='text-azulPadrao'>Os livros podem ser avaliados por outros usuários após o término da leitura.</p>
+                        <p className='text-azulPadrao'>Os livros podem ser avaliados por outros usuários após o término da leitura. Passando o mouse no card de cada livro, você consegue visualizar comentários.</p>
                     </div>
                     <div className="flex flex-wrap justify-center gap-6">
                         {listaSugestoes.map((livro, index) => (
@@ -94,7 +141,7 @@ export default function Inicio() {
                                         <IoCloseSharp className="text-vermelhoClaro text-[50px]" />
                                     </button>
                                 </div>
-                                <CardLivro {...livro} sugestao={true} />
+                                {constroiCard(livro)}
                             </div>
                         ))}
                     </div>
@@ -110,21 +157,21 @@ export default function Inicio() {
                 </div>
             </div>
 
-            <div className='flex  flex-col items-center'>
+            <div>
                 {metasDeLivros.length > 0 && (
-                        <div>
-                            <h2 className='font-bold text-[28px] text-azulPadrao'>METAS ATUAIS</h2>
-                            <div className='flex gap-[100px] mt-[75px] flex-wrap justify-center'>
-                                {metasDeLivros.map((livro, index) => (
-                                    <div key={index} className='flex flex-col items-center gap-[15px]'>
-                                        <h2 className='text-azulPadrao'>{livro.titulo}</h2>
-                                        <CardMeta firstValuePercentage={(livro.pagina_atual / livro.quantidade_paginas) * 100} paginaAtual={livro.pagina_atual} paginaFinal={livro.quantidade_paginas} />
-                                        <p className='text-azulPadrao'>{calculaDiasRestantes(livro.data_meta)} dias restantes</p>
-                                    </div>
-                                ))}
-                            </div>
+                    <div className='flex flex-col items-center'>
+                        <h2 className='font-bold text-[28px] text-azulPadrao'>METAS ATUAIS</h2>
+                        <div className='flex gap-[100px] mt-[75px] flex-wrap justify-center'>
+                            {metasDeLivros.map((livro, index) => (
+                                <div key={index} className='flex flex-col items-center gap-[15px]'>
+                                    <h2 className='text-azulPadrao'>{livro.titulo}</h2>
+                                    <CardMeta firstValuePercentage={(livro.pagina_atual / livro.quantidade_paginas) * 100} paginaAtual={livro.pagina_atual} paginaFinal={livro.quantidade_paginas} />
+                                    <p className='text-azulPadrao'>{calculaDiasRestantes(livro.data_meta)} dias restantes</p>
+                                </div>
+                            ))}
                         </div>
-                    )}
+                    </div>
+                )}
             </div>
         </section>
     )

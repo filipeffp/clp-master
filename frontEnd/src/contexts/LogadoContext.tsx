@@ -17,7 +17,7 @@ interface LogadoContextProps {
   setListaSugestoes: Dispatch<SetStateAction<any[]>>;
   ListarLivrosComMeta: () => void; // Alterado para não mais receber parâmetros
   metasDeLivros: any[];
-  setMetasDeLivros: Dispatch<SetStateAction<any[]>>;
+  setMetasDeLivros: Dispatch<SetStateAction<any[]>>;  
 }
 
 export const LogadoContext = createContext<LogadoContextProps>({
@@ -35,7 +35,7 @@ export const LogadoContext = createContext<LogadoContextProps>({
   setListaSugestoes: () => {},
   ListarLivrosComMeta: () => {}, // Inicialmente uma função vazia
   metasDeLivros: [],
-  setMetasDeLivros: () => {}
+  setMetasDeLivros: () => {},  
 }); 
 
 export function LogadoProvider({ children }: { children: React.ReactNode }) {
@@ -44,22 +44,20 @@ export function LogadoProvider({ children }: { children: React.ReactNode }) {
   const [livros, setLivros] = useState<LivroProps[]>([]);
   const [nome, setNome] = useState<string>('');
   const [listaSugestoes, setListaSugestoes] = useState<any[]>([]);
-  const [metasDeLivros, setMetasDeLivros] = useState<LivroProps[]>([]); // Novo estado
+  const [metasDeLivros, setMetasDeLivros] = useState<LivroProps[]>([]); // Novo estado  
 
   useEffect(() => {
     if (livros.length > 0) {
       criaSugestoes();
-      ListarLivrosComMeta();
+      ListarLivrosComMeta();           
     }
-  }, [livros]);
+  }, [livros]);     
 
   const buscaLivrosPorUsuario = async () => {
     try {
       const resposta = await api.get(`/livros/buscar_usuario?usuario_id=${usuarioID}`);
       const livrosUsuario = resposta.data;
-      setLivros(livrosUsuario);
-      ListarLivrosComMeta();
-      criaSugestoes();
+      setLivros(livrosUsuario);            
     } catch (erro) {
       console.error('Erro ao buscar livros do usuário:', erro);
     }
@@ -94,7 +92,9 @@ export function LogadoProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (logado && usuarioID) {
-      buscaLivrosPorUsuario();      
+      buscaLivrosPorUsuario();  
+      criaSugestoes();
+      ListarLivrosComMeta();               
     }
   }, [logado, usuarioID]);
 
@@ -115,7 +115,7 @@ export function LogadoProvider({ children }: { children: React.ReactNode }) {
         setListaSugestoes,
         ListarLivrosComMeta,
         metasDeLivros,
-        setMetasDeLivros
+        setMetasDeLivros,                
       }}
     >
       {children}
