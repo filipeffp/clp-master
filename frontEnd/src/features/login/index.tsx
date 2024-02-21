@@ -49,7 +49,6 @@ export default function Login() {
       // Lidar com erros da requisição
       console.error("Erro ao buscar usuários:", erro);
     }
-
   }
 
   const digitaEmail = (event: any) => {

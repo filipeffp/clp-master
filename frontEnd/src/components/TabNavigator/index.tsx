@@ -1,5 +1,6 @@
 import icon_inicio from '../../assets/inicio.png'
 import icon_meusLivros from '../../assets/icone_meusLivros.png'
+import relatorio from '../../assets/relatorio.png'
 import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
@@ -19,7 +20,12 @@ const botoes: Botao[] = [
         url: "/logado/meusLivros",
         imagem: icon_meusLivros,
         id: 2,        
-    },    
+    },  
+    {
+        url: "/logado/relatorio",
+        imagem: relatorio,
+        id: 3,        
+    }  
 ]
 
 export default function TabNavigator() {
